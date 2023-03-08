@@ -1,7 +1,9 @@
 # firts import the package as an abreviature
 import tkinter as tk
 from tkinter.filedialog import askdirectory
+import tkinter.messagebox
 import os
+import pathlib as p
 
 # then set-up a variable for the window with the class buil-in in the package Tk()
 window = tk.Tk()
@@ -20,17 +22,25 @@ canvas.pack()
 
 
 def get_source():
-    path = askdirectory()
-    print(path)
+    global path
+    path = p.Path(askdirectory())
+    text = tk.Label(text= path)
+    text.place()
+    #tkinter.messagebox.showinfo(message= path)
     
-    t_path = path.replace("/", '\\')
-    print(t_path)
+    #print(path)
+    #path = p.Path(path)
+    #print(path)
+    #t_path = path.replace("/", '\\')
+    #print(t_path)
     # for relPath,dirs,files in os.walk(path):
     #     print(files)
 
 
 button = tk.Button(text="Source 📁", command= get_source)
-button.pack()
+button.pack((1,0))
+
+
 
 
 
